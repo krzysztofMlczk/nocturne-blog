@@ -1,7 +1,9 @@
 export default function DefaultHeadTags() {
   return (
     <>
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta content="width=device-width, initial-scale=1" name="viewport" />
+      <meta name="description" content="Nocturne Game Engine" />
+      <link rel="icon" href="/favicon.ico" />
     </>
   );
 }

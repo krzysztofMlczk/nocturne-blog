@@ -3,7 +3,7 @@ import DefaultHeadTags from "./DefaultHeadTags";
 export default function Head() {
   return (
     <>
-      <title>Nocturne Game Engine</title>
+      <title>Nocturne Blog</title>
       <DefaultHeadTags />
     </>
   );
