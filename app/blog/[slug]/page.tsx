@@ -1,13 +1,29 @@
+// import parse from "html-react-parser";
+import { GetPostBySlug, gqlClient } from "../../../gql";
+
 interface PageProps {
   params: {
     slug: string;
   };
 }
 
-export default function Page({ params }: PageProps) {
+export default async function Page({ params }: PageProps) {
+  const { post } = await gqlClient.request(GetPostBySlug, {
+    slug: params.slug,
+  });
+
+  if (!post) {
+    return <div>Oops something went wrong...</div>;
+  }
+
+  // TODO: how can we utilize html-react-parser without:
+  // TypeError: Invalid value used as weak map key?
   return (
-    <div>
-      <h1>{params.slug}</h1>
-    </div>
+    <article
+      className="prose"
+      dangerouslySetInnerHTML={{ __html: post.content.html }}
+    >
+      {/* {parse(post.content.html)} */}
+    </article>
   );
 }
