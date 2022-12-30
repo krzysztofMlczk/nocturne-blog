@@ -1,3 +1,26 @@
 {
-  "extends": "next/core-web-vitals"
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    // enforce to use the type-safe equality operators === and !== over == and !=
+    "eqeqeq": "error",
+    // enforce curly braces for every code block
+    "curly": "error",
+    // disallow to use console directly (and force to use logger)
+    "no-console": "error",
+    // enforce Array<T> over T[]
+    "@typescript-eslint/array-type": ["warn", { "default": "generic" }],
+    // enfore 'as' for type casting
+    "@typescript-eslint/consistent-type-assertions": [
+      "error",
+      {
+        "assertionStyle": "as"
+      }
+    ]
+  }
 }
