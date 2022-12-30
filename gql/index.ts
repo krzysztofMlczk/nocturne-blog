@@ -1,3 +1,2 @@
-export * from "./gql-client";
-export * from "./codegen";
-export * from "./documents";
+export * from './gql-client';
+export * from './documents';

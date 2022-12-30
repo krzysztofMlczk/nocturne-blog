@@ -1,5 +1,5 @@
-import parse from "html-react-parser";
-import { GetPostBySlug, gqlClient } from "../../gql";
+import { GetPostBySlug, gqlClient } from '@gql';
+import parse from 'html-react-parser';
 
 interface PageProps {
   params: {
@@ -16,5 +16,5 @@ export default async function Page({ params }: PageProps) {
     return <div>Oops something went wrong...</div>;
   }
 
-  return <article className="prose">{parse(post.content.html)}</article>;
+  return <article className='prose'>{parse(post.content.html)}</article>;
 }

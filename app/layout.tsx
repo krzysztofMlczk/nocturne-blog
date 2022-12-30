@@ -1,4 +1,4 @@
-import "../styles/globals.css";
+import '@styles/globals.css';
 
 export default async function RootLayout({
   children,
@@ -6,7 +6,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang='en'>
       <head />
       <body>{children}</body>
     </html>

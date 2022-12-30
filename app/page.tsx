@@ -1,5 +1,5 @@
-import { gqlClient, GetPostsOverview } from "../gql";
-import Link from "next/link";
+import { GetPostsOverview, gqlClient } from '@gql';
+import Link from 'next/link';
 
 export default async function Page() {
   const { posts } = await gqlClient.request(GetPostsOverview);
