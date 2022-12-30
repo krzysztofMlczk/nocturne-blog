@@ -1,8 +1,15 @@
 {
   "singleQuote": true,
   "jsxSingleQuote": true,
-  "importOrder": ["<THIRD_PARTY_MODULES>", "^@(.+)/(.+)$", "^\\..+"],
-  "importOrderSeparation": false,
+  "importOrder": [
+    "<THIRD_PARTY_MODULES>",
+    "^@gql(.*)$",
+    "^@styles/(.*)$",
+    "^@public/(.*)$",
+    "^@components/(.*)$",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
   "importOrderCaseInsensitive": true
 }

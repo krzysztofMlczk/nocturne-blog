@@ -1,5 +1,6 @@
-import { GetPostBySlug, gqlClient } from '@gql';
 import parse from 'html-react-parser';
+
+import { GetPostBySlug, gqlClient } from '@gql';
 
 interface PageProps {
   params: {
