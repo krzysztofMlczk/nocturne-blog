@@ -1,4 +1,5 @@
 import { PT_Sans } from '@next/font/google';
+import clsx from 'clsx';
 
 import '@styles/globals.css';
 
@@ -14,7 +15,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en' className={ptSans.variable}>
+    <html lang='en' className={clsx('bg-cod-gray', ptSans.variable)}>
       <head />
       <body>{children}</body>
     </html>
