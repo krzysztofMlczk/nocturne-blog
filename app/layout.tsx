@@ -3,6 +3,8 @@ import clsx from 'clsx';
 
 import '@styles/globals.css';
 
+import { Footer } from '@components/footer';
+
 const ptSans = PT_Sans({
   variable: '--font-pt-sans', // CSS variable name
   weight: ['400', '700'],
@@ -17,7 +19,10 @@ export default async function RootLayout({
   return (
     <html lang='en' className={clsx('bg-cod-gray', ptSans.variable)}>
       <head />
-      <body>{children}</body>
+      <body>
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
