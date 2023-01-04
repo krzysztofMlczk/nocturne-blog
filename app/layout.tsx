@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import '@styles/globals.css';
 
 import { Footer } from '@components/footer';
+import { Navbar } from '@components/Navbar';
 
 const ptSans = PT_Sans({
   variable: '--font-pt-sans', // CSS variable name
@@ -20,6 +21,7 @@ export default async function RootLayout({
     <html lang='en' className={clsx('bg-cod-gray', ptSans.variable)}>
       <head />
       <body>
+        <Navbar />
         {children}
         <Footer />
       </body>

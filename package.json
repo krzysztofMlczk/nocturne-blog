@@ -16,6 +16,8 @@
     "@fortawesome/free-regular-svg-icons": "6.2.1",
     "@fortawesome/free-solid-svg-icons": "6.2.1",
     "@fortawesome/react-fontawesome": "0.2.0",
+    "@headlessui/react": "1.7.7",
+    "@heroicons/react": "2.0.13",
     "@next/font": "1z3.1.1",
     "@types/node": "18.11.17",
     "@types/react": "18.0.26",
