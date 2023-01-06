@@ -14,10 +14,10 @@ interface FooterProps {
 
 export const Footer = ({ socialIconsSizePX = 20 }: FooterProps) => {
   return (
-    <footer className='bg-chaos-black p-8'>
-      <div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 flex flex-col gap-8'>
+    <footer className='bg-chaos-black py-8 px-6 lg:px-8'>
+      <div className='mx-auto max-w-7xl flex flex-col gap-8'>
         <hr className='bg-dusty-gray' />
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-60'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-20 md:gap-40 lg:gap-60'>
           <div className='flex flex-col gap-5'>
             <h3 className='text-white text-2xl font-bold'>About</h3>
             <p className='text-dusty-gray text-sm'>
@@ -35,8 +35,8 @@ export const Footer = ({ socialIconsSizePX = 20 }: FooterProps) => {
             </div>
           </div>
         </div>
-        <div className='flex justify-between'>
-          <div className='flex gap-6 items-center'>
+        <div className='flex flex-col-reverse sm:flex-row gap-3 justify-between'>
+          <div className='flex flex-col md:flex-row gap-6 items-center sm:items-start md:items-center'>
             <div className='flex gap-4'>
               <FontAwesomeIcon
                 icon={faLinkedinIn}
@@ -57,7 +57,7 @@ export const Footer = ({ socialIconsSizePX = 20 }: FooterProps) => {
                 className='cursor-pointer'
               />
             </div>
-            <p className='text-dusty-gray text-sm'>
+            <p className='text-dusty-gray text-sm text-center sm:text-left'>
               Copyright ©2022 Nocturne inc. All right reserved.
             </p>
           </div>

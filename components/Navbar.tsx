@@ -30,7 +30,7 @@ export function Navbar() {
       {({ open }) => (
         <>
           <div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8'>
-            <div className='relative flex h-16 items-center justify-between'>
+            <div className='relative flex h-[75px] items-center justify-between'>
               <div className='absolute inset-y-0 left-0 flex items-center sm:hidden'>
                 {/* Mobile menu button*/}
                 <Disclosure.Button className='inline-flex items-center justify-center rounded-md p-2 text-dusty-gray hover:bg-dusty-gray-900 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-dusty-gray'>
@@ -84,11 +84,14 @@ export function Navbar() {
             leaveTo='transform opacity-0 scale-95'
           >
             <Disclosure.Panel className='sm:hidden fixed bg-inherit w-full'>
-              <div className='space-y-1 px-2 pt-2 pb-3'>
-                {navigation.map((item) => (
-                  <NavItem key={item.slug} item={item} />
-                ))}
-              </div>
+              {({ close }) => (
+                <div className='space-y-1 px-2 pt-2 pb-3'>
+                  {navigation.map((item) => (
+                    <NavItem key={item.slug} item={item} onClick={close} />
+                    // <Disclosure.Button key={item.slug} as={NavItem} item={item} />
+                  ))}
+                </div>
+              )}
             </Disclosure.Panel>
           </Transition>
         </>
@@ -97,12 +100,13 @@ export function Navbar() {
   );
 }
 
-function NavItem({ item }: { item: NavItem }) {
+function NavItem({ item, onClick }: { item: NavItem; onClick?: () => void }) {
   const segment = useSelectedLayoutSegment();
   const isActive = item.slug === segment;
   return (
     <Link
       href={`/${item.slug}`}
+      onClick={onClick}
       className={clsx(
         'px-3 py-2 rounded-md text-md block',
         isActive

@@ -3,11 +3,8 @@
   "jsxSingleQuote": true,
   "importOrder": [
     "<THIRD_PARTY_MODULES>",
-    "^@gql(.*)$",
-    "^@styles/(.*)$",
-    "^@public/(.*)$",
-    "^@components/(.*)$",
-    "^[./]"
+    "^@",
+    "^#"
   ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,

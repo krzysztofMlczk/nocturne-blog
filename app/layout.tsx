@@ -1,10 +1,10 @@
-import { PT_Sans } from '@next/font/google';
 import clsx from 'clsx';
 
-import '@styles/globals.css';
+import { PT_Sans } from '@next/font/google';
 
-import { Footer } from '@components/footer';
-import { Navbar } from '@components/Navbar';
+import { Footer } from '#/components/footer';
+import { Navbar } from '#/components/Navbar';
+import '#/styles/globals.css';
 
 const ptSans = PT_Sans({
   variable: '--font-pt-sans', // CSS variable name
@@ -22,6 +22,7 @@ export default async function RootLayout({
       <head />
       <body>
         <Navbar />
+        {/* We cannot create container around everything because? - not all elements should be contained some hero images e.g. should span and take whole view port width */}
         {children}
         <Footer />
       </body>

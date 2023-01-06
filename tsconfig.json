@@ -19,12 +19,9 @@
         "name": "next"
       }
     ],
-    "baseUrl": ".",
+    "baseUrl": ".", // base (root) directory
     "paths": {
-      "@gql": ["gql/index"],
-      "@styles/*": ["styles/*"],
-      "@public/*": ["public/*"],
-      "@components/*": ["components/*"]
+      "#/*": ["./*"] // map base (root) directory to # [e.g. '#/public']
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
