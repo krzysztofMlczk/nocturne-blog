@@ -1,25 +1,15 @@
 'use client';
 
-import { Disclosure, Transition } from '@headlessui/react';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import clsx from 'clsx';
+import { LinkButton } from './buttons/LinkButton';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useSelectedLayoutSegment } from 'next/navigation';
 import { Fragment } from 'react';
 
-import { LinkButton } from './buttons/LinkButton';
+import { Disclosure, Transition } from '@headlessui/react';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
-interface NavItem {
-  label: string;
-  slug: string;
-}
-
-const navigation: Array<NavItem> = [
-  { label: 'About', slug: 'about' },
-  { label: 'Blog', slug: 'blog' },
-  { label: 'Contact', slug: 'contact' },
-];
+import { NavItem } from '#/components/NavItem';
+import { RouteNavItemMap } from '#/utils/constants';
 
 export function Navbar() {
   return (
@@ -51,19 +41,27 @@ export function Navbar() {
                     height={20}
                     alt='Company Logo'
                   />
-                  <Image
-                    className='hidden h-8 w-auto lg:block'
-                    src='/logo.svg'
-                    width={20}
-                    height={20}
-                    alt='Company Logo'
-                  />
+                  <Link href={`${RouteNavItemMap.home.slug}`}>
+                    <Image
+                      className='hidden h-8 w-auto lg:block'
+                      src='/logo.svg'
+                      width={20}
+                      height={20}
+                      alt='Company Logo'
+                    />
+                  </Link>
                 </div>
                 <div className='hidden sm:ml-6 sm:block'>
                   <div className='flex space-x-4'>
-                    {navigation.map((item) => (
-                      <NavItem key={item.slug} item={item} />
-                    ))}
+                    {Object.values(RouteNavItemMap)
+                      .filter((item) => item.slug !== RouteNavItemMap.home.slug)
+                      .map((item) => (
+                        <NavItem
+                          key={item.slug}
+                          variant='header'
+                          navigationItem={item}
+                        />
+                      ))}
                   </div>
                 </div>
               </div>
@@ -86,8 +84,13 @@ export function Navbar() {
             <Disclosure.Panel className='sm:hidden fixed bg-inherit w-full'>
               {({ close }) => (
                 <div className='space-y-1 px-2 pt-2 pb-3'>
-                  {navigation.map((item) => (
-                    <NavItem key={item.slug} item={item} onClick={close} />
+                  {Object.values(RouteNavItemMap).map((item) => (
+                    <NavItem
+                      key={item.slug}
+                      variant='header'
+                      navigationItem={item}
+                      onClick={close}
+                    />
                   ))}
                 </div>
               )}
@@ -96,24 +99,5 @@ export function Navbar() {
         </>
       )}
     </Disclosure>
-  );
-}
-
-function NavItem({ item, onClick }: { item: NavItem; onClick?: () => void }) {
-  const segment = useSelectedLayoutSegment();
-  const isActive = item.slug === segment;
-  return (
-    <Link
-      href={`/${item.slug}`}
-      onClick={onClick}
-      className={clsx(
-        'px-3 py-2 rounded-md text-md block',
-        isActive
-          ? 'bg-cod-gray text-supernova'
-          : 'text-dusty-gray hover:bg-cod-gray-400 hover:text-white'
-      )}
-    >
-      {item.label}
-    </Link>
   );
 }

@@ -1,10 +1,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { PostPreviewData } from '#/types/blog';
 import { formatStringDate } from '#/utils/string-date-formatter';
 
-type PostCardProps = PostPreviewData;
+interface PostCardProps {
+  slug: string;
+  featuredImageUrl: string;
+  title: string;
+  excerpt: string;
+  author: string | null;
+  createdAt: string;
+}
 
 export function PostCard({
   slug,
@@ -42,12 +48,16 @@ export function PostCard({
           {excerpt}
         </p>
         <div className='text-xs space-x-1 mt-auto'>
-          <span className='group-hover:text-white transition-colors font-bold text-dusty-gray-300 capitalize'>
-            {author}
-          </span>
-          <span className='group-hover:text-dusty-gray text-dusty-gray-600 transition-colors select-none'>
-            •
-          </span>
+          {author && (
+            <>
+              <span className='group-hover:text-white transition-colors font-bold text-dusty-gray-300 capitalize'>
+                {author}
+              </span>
+              <span className='group-hover:text-dusty-gray text-dusty-gray-600 transition-colors select-none'>
+                •
+              </span>
+            </>
+          )}
           <span className='group-hover:text-dusty-gray text-dusty-gray-600 transition-colors '>
             {formatStringDate(createdAt)}
           </span>
