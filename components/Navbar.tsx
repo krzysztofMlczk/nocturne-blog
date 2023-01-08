@@ -25,7 +25,7 @@ export function Navbar() {
   return (
     <Disclosure
       as='nav'
-      className='bg-chaos-black sticky left-0 top-0 w-full lg:static'
+      className='bg-chaos-black sticky left-0 top-0 w-full lg:static z-50'
     >
       {({ open }) => (
         <>
@@ -88,7 +88,6 @@ export function Navbar() {
                 <div className='space-y-1 px-2 pt-2 pb-3'>
                   {navigation.map((item) => (
                     <NavItem key={item.slug} item={item} onClick={close} />
-                    // <Disclosure.Button key={item.slug} as={NavItem} item={item} />
                   ))}
                 </div>
               )}

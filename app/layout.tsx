@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import { PT_Sans } from '@next/font/google';
+import { PT_Sans, PT_Sans_Caption } from '@next/font/google';
 
 import { Footer } from '#/components/footer';
 import { Navbar } from '#/components/Navbar';
@@ -12,18 +12,26 @@ const ptSans = PT_Sans({
   subsets: ['latin'],
 });
 
+const ptSansCaption = PT_Sans_Caption({
+  variable: '--font-pt-sans-caption', // CSS variable name
+  weight: ['400', '700'],
+  subsets: ['latin'],
+});
+
 export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en' className={clsx('bg-cod-gray', ptSans.variable)}>
+    <html
+      lang='en'
+      className={clsx('bg-cod-gray', ptSans.variable, ptSansCaption.variable)} // add fonts' CSS variables to HTML document
+    >
       <head />
-      <body>
+      <body className='flex flex-col min-h-screen'>
         <Navbar />
-        {/* We cannot create container around everything because? - not all elements should be contained some hero images e.g. should span and take whole view port width */}
-        {children}
+        <main className='flex-grow'>{children}</main>
         <Footer />
       </body>
     </html>
