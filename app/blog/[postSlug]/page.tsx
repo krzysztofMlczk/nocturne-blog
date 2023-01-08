@@ -4,13 +4,13 @@ import { GetPostBySlug, gqlClient } from '#/gql';
 
 interface PageProps {
   params: {
-    slug: string;
+    postSlug: string;
   };
 }
 
 export default async function Page({ params }: PageProps) {
   const { post } = await gqlClient.request(GetPostBySlug, {
-    slug: params.slug,
+    slug: params.postSlug,
   });
 
   if (!post) {

@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['var(--font-pt-sans)'], // use as .font-sans utility class
+        caption: ['var(--font-pt-sans-caption)'], // use as .font-caption utility class
       },
       colors: {
         'chaos-black': {
@@ -101,5 +102,8 @@ module.exports = {
       }),
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/line-clamp'),
+  ],
 };

@@ -1,18 +1,22 @@
+'use client';
+
+import { LinkButton } from './buttons/LinkButton';
+
 import {
   faLinkedinIn,
   faTwitch,
   faTwitter,
 } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Link from 'next/link';
 
-import { LinkButton } from './buttons/LinkButton';
+import { NavItem } from '#/components/NavItem';
+import { RouteNavItemMap } from '#/utils/constants';
 
 interface FooterProps {
   socialIconsSizePX?: number;
 }
 
-export const Footer = ({ socialIconsSizePX = 20 }: FooterProps) => {
+export function Footer({ socialIconsSizePX = 20 }: FooterProps) {
   return (
     <footer className='bg-chaos-black py-8 px-6 lg:px-8'>
       <div className='mx-auto max-w-7xl flex flex-col gap-8'>
@@ -23,15 +27,22 @@ export const Footer = ({ socialIconsSizePX = 20 }: FooterProps) => {
             <p className='text-dusty-gray text-sm'>
               We create modern solutions for game-dev community. We give
               satisfaction to our recipients. We help developers ship on time.
-              We help development teams build breathtaking products.
+              Our products allow development teams to build breathtaking
+              products. We are Nocturne.
             </p>
           </div>
           <div className='flex flex-col gap-5'>
-            <h3 className='text-white text-2xl font-bold'>Navigation</h3>
-            <div className='flex gap-5 text-dusty-gray'>
-              <Link href='TODO'>About</Link>
-              <Link href='/'>Blog</Link>
-              <Link href='/contact'>Contact</Link>
+            <h3 className='text-white text-2xl font-bold capitalize'>
+              Navigation
+            </h3>
+            <div className='flex gap-5'>
+              {Object.values(RouteNavItemMap).map((item) => (
+                <NavItem
+                  key={item.slug}
+                  variant='footer'
+                  navigationItem={item}
+                />
+              ))}
             </div>
           </div>
         </div>
@@ -68,4 +79,4 @@ export const Footer = ({ socialIconsSizePX = 20 }: FooterProps) => {
       </div>
     </footer>
   );
-};
+}
