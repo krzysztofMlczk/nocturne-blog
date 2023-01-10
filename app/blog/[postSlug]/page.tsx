@@ -18,7 +18,7 @@ export default async function Page({ params }: PageProps) {
   }
 
   return (
-    <article className='prose prose-light prose-lg md:prose-xl mx-auto'>
+    <article className='prose md:prose-lg lg:prose-xl prose-nocturne mx-auto'>
       {parse(post.content.html)}
     </article>
   );

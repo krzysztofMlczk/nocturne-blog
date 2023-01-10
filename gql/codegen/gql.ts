@@ -16,6 +16,7 @@ const documents = {
     "\n  query GetAllPosts {\n    posts {\n      slug\n      featuredImage {\n        url\n      }\n      title\n      excerpt\n      author {\n        name\n      }\n      createdAt\n    }\n  }\n": types.GetAllPostsDocument,
     "\n  query GetAllTags {\n    tags {\n      name\n      slug\n    }\n  }\n": types.GetAllTagsDocument,
     "\n  query GetPostBySlug($slug: String!) {\n    post(where: { slug: $slug }) {\n      id\n      title\n      slug\n      content {\n        html\n      }\n      featuredImage {\n        url\n      }\n    }\n  }\n": types.GetPostBySlugDocument,
+    "\n  query GetPostHeadInfoBySlug($postSlug: String!) {\n    post(where: { slug: $postSlug }) {\n      title\n      author {\n        name\n      }\n      createdAt\n    }\n  }\n": types.GetPostHeadInfoBySlugDocument,
     "\n  query GetPostsByTagSlug($tagSlug: String!) {\n    posts(where: { tags_some: { slug: $tagSlug } }) {\n      slug\n      featuredImage {\n        url\n      }\n      title\n      excerpt\n      author {\n        name\n      }\n      createdAt\n    }\n  }\n": types.GetPostsByTagSlugDocument,
 };
 
@@ -31,6 +32,10 @@ export function graphql(source: "\n  query GetAllTags {\n    tags {\n      name\
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n  query GetPostBySlug($slug: String!) {\n    post(where: { slug: $slug }) {\n      id\n      title\n      slug\n      content {\n        html\n      }\n      featuredImage {\n        url\n      }\n    }\n  }\n"): (typeof documents)["\n  query GetPostBySlug($slug: String!) {\n    post(where: { slug: $slug }) {\n      id\n      title\n      slug\n      content {\n        html\n      }\n      featuredImage {\n        url\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query GetPostHeadInfoBySlug($postSlug: String!) {\n    post(where: { slug: $postSlug }) {\n      title\n      author {\n        name\n      }\n      createdAt\n    }\n  }\n"): (typeof documents)["\n  query GetPostHeadInfoBySlug($postSlug: String!) {\n    post(where: { slug: $postSlug }) {\n      title\n      author {\n        name\n      }\n      createdAt\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
