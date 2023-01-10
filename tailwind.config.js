@@ -63,40 +63,59 @@ module.exports = {
       },
       // prose customisations
       typography: ({ theme }) => ({
-        light: {
+        // custom `nocturne` color theme
+        nocturne: {
           css: {
-            '--tw-prose-body': theme('colors.dusty-gray.DEFAULT'),
+            '--tw-prose-body': theme('colors.dusty-gray.DEFAULT'), // alternatives: dusty-gray[400/500]
             '--tw-prose-headings': theme('colors.white'),
-            '--tw-prose-lead': theme('colors.pink[700]'),
-            '--tw-prose-links': theme('colors.pink[900]'),
-            '--tw-prose-bold': theme('colors.supernova.DEFAULT'),
-            '--tw-prose-counters': theme('colors.pink[600]'),
-            '--tw-prose-bullets': theme('colors.pink[400]'),
-            '--tw-prose-hr': theme('colors.pink[300]'),
-            '--tw-prose-quotes': theme('colors.pink[900]'),
-            '--tw-prose-quote-borders': theme('colors.pink[300]'),
+            '--tw-prose-lead': theme('colors.pink[700]'), // COLOR?
+            '--tw-prose-links': theme('colors.supernova.600'),
+            '--tw-prose-bold': theme('colors.white'),
+            '--tw-prose-counters': theme('colors.supernova.600'),
+            '--tw-prose-bullets': theme('colors.supernova.600'),
+            '--tw-prose-hr': theme('colors.dusty-gray.DEFAULT'),
+            '--tw-prose-quotes': theme('colors.supernova.600'),
+            '--tw-prose-quote-borders': theme('colors.supernova.600'),
             '--tw-prose-captions': theme('colors.pink[700]'),
-            '--tw-prose-code': theme('colors.pink[900]'),
-            '--tw-prose-pre-code': theme('colors.pink[100]'),
-            '--tw-prose-pre-bg': theme('colors.pink[900]'),
-            '--tw-prose-th-borders': theme('colors.pink[300]'),
-            '--tw-prose-td-borders': theme('colors.pink[200]'),
-            '--tw-prose-invert-body': theme('colors.pink[200]'),
-            '--tw-prose-invert-headings': theme('colors.white'),
-            '--tw-prose-invert-lead': theme('colors.pink[300]'),
-            '--tw-prose-invert-links': theme('colors.white'),
-            '--tw-prose-invert-bold': theme('colors.white'),
-            '--tw-prose-invert-counters': theme('colors.pink[400]'),
-            '--tw-prose-invert-bullets': theme('colors.pink[600]'),
-            '--tw-prose-invert-hr': theme('colors.pink[700]'),
-            '--tw-prose-invert-quotes': theme('colors.pink[100]'),
-            '--tw-prose-invert-quote-borders': theme('colors.pink[700]'),
-            '--tw-prose-invert-captions': theme('colors.pink[400]'),
-            '--tw-prose-invert-code': theme('colors.white'),
-            '--tw-prose-invert-pre-code': theme('colors.pink[300]'),
-            '--tw-prose-invert-pre-bg': 'rgb(0 0 0 / 50%)',
-            '--tw-prose-invert-th-borders': theme('colors.pink[600]'),
-            '--tw-prose-invert-td-borders': theme('colors.pink[700]'),
+            '--tw-prose-code': theme('colors.dusty-gray.100'), // alternative: chaos-black[50/100] or dusty-gray[100/700]
+            '--tw-prose-pre-code': theme('colors.dusty-gray.200'), // alternative: dusty-gray[200/300]
+            '--tw-prose-pre-bg': theme('colors.chaos-black.400'),
+            '--tw-prose-th-borders': theme('colors.supernova.400'),
+            '--tw-prose-td-borders': theme('colors.supernova.400'),
+            '--tw-prose-invert-body': theme('colors.pink[200]'), // COLOR?
+            '--tw-prose-invert-headings': theme('colors.white'), // COLOR?
+            '--tw-prose-invert-lead': theme('colors.pink[300]'), // COLOR?
+            '--tw-prose-invert-links': theme('colors.white'), // COLOR?
+            '--tw-prose-invert-bold': theme('colors.white'), // COLOR?
+            '--tw-prose-invert-counters': theme('colors.pink[400]'), // COLOR?
+            '--tw-prose-invert-bullets': theme('colors.pink[600]'), // COLOR?
+            '--tw-prose-invert-hr': theme('colors.pink[700]'), // COLOR?
+            '--tw-prose-invert-quotes': theme('colors.pink[100]'), // COLOR?
+            '--tw-prose-invert-quote-borders': theme('colors.pink[700]'), // COLOR?
+            '--tw-prose-invert-captions': theme('colors.pink[400]'), // COLOR?
+            '--tw-prose-invert-code': theme('colors.white'), // COLOR?
+            '--tw-prose-invert-pre-code': theme('colors.pink[300]'), // COLOR?
+            '--tw-prose-invert-pre-bg': 'rgb(0 0 0 / 50%)', // COLOR?
+            '--tw-prose-invert-th-borders': theme('colors.pink[600]'), // COLOR?
+            '--tw-prose-invert-td-borders': theme('colors.pink[700]'), // COLOR?
+          },
+        },
+        // raw CSS customisations [we only use lg and xl modifiers and they both should have same overrides]
+        // for exact modifier see reference here: https://github.com/tailwindlabs/tailwindcss-typography/blob/master/src/styles.js
+        lg: {
+          css: {
+            blockquote: {
+              fontStyle: 'normal',
+              backgroundColor: theme('colors.chaos-black.DEFAULT'),
+            },
+          },
+        },
+        xl: {
+          css: {
+            blockquote: {
+              fontStyle: 'normal',
+              backgroundColor: theme('colors.chaos-black.DEFAULT'),
+            },
           },
         },
       }),
