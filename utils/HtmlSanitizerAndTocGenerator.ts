@@ -7,11 +7,26 @@ import slugify from 'slugify';
 export interface TocItem {
   id: string;
   weight: number;
+  indent: number;
   text: string;
 }
 
 type HeaderType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 export const tocHeaderSelector = 'h1, h2, h3, h4, h5';
+
+function computeIndent(currentItemWeight: number, tocArray: Array<TocItem>) {
+  const tocArrayClone: Array<TocItem> = JSON.parse(JSON.stringify(tocArray)); // we want to work on a copy of the array
+  // try to find the closest preceding TOC item which weight is lower (closest 'header' that is 'more important')
+  // current item will be added at the end of array that's why we need to start from the end
+  // (because we are looking for the closest preceding element!)
+  const closestPrecedingTOCItemWithLowerWeight = tocArrayClone
+    .reverse()
+    .find((item) => item.weight < currentItemWeight);
+  if (closestPrecedingTOCItemWithLowerWeight) {
+    return closestPrecedingTOCItemWithLowerWeight.indent + 1;
+  }
+  return 0; // if there is no preceding header with higher weight, then this header should have 0 indentation
+}
 
 function generateTOCItem(
   headerText: string,
@@ -29,9 +44,17 @@ function generateTOCItem(
   // but they have to be distinct, so in redundant cases we will also append index to the id
   const idIsRedundant = tocArray.some((tocItem) => tocItem.id === id);
 
+  // weight of header e.g. h1 => 1; h4 => 4 etc.
+  // the lower the weight the more important is the header h1[1] >> h4[4]
+  const weight = parseInt(tagName.replace('h', ''));
+  // compute indent value if there already are items in the TOC,
+  // otherwise this is the starting toc item -> indent is 0
+  const indent = tocArray.length ? computeIndent(weight, tocArray) : 0;
+
   return {
     id: `${id}${idIsRedundant ? index : ''}`,
-    weight: parseInt(tagName.replace('h', '')) - 1,
+    weight,
+    indent,
     text: headerText,
   };
 }
