@@ -1,6 +1,7 @@
+import Link from 'next/link';
+
 import { faCircleArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Link from 'next/link';
 
 interface LinkButtonProps {
   textPrefix?: string;
@@ -18,8 +19,11 @@ export const LinkButton = ({ textPrefix, href, children }: LinkButtonProps) => {
         {textPrefix && `${textPrefix} `}
         {children}
       </span>
-      {/* TODO use predefined colors from tailwindCSS config */}
-      <FontAwesomeIcon icon={faCircleArrowRight} width={20} color='#FFC700' />
+      <FontAwesomeIcon
+        icon={faCircleArrowRight}
+        width={20}
+        className='text-supernova'
+      />
     </Link>
   );
 };

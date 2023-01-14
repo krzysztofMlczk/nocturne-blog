@@ -1,4 +1,4 @@
-import { formatStringDate } from '#/utils/string-date-formatter';
+import { formatStringDate } from '#/utils/stringDateFormatter';
 
 export function generateHeadTitle(
   title: string,

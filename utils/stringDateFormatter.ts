@@ -1,5 +1,5 @@
-// For now the only locale supported is 'en-us' - this could be extended to other locales
-import { formatAsOrdinal } from '#/utils/ordinal-formatter';
+// TODO: For now the only locale supported is 'en-us' - this could be extended to other locales
+import { formatAsOrdinal } from '#/utils/ordinalFormatter';
 
 export function formatStringDate(dateStringISO: string) {
   const date = new Date(dateStringISO);
