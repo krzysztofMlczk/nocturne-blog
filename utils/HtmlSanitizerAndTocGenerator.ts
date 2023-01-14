@@ -14,7 +14,7 @@ type HeaderType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 export const tocHeaderSelector = 'h1, h2, h3, h4, h5, h6';
 
 function computeIndent(currentItemWeight: number, tocArray: Array<TocItem>) {
-  const tocArrayClone: Array<TocItem> = structuredClone(tocArray); // we want to work on a copy of the array
+  const tocArrayClone: Array<TocItem> = JSON.parse(JSON.stringify(tocArray)); // we want to work on a copy of the array
   // try to find the closest preceding TOC item which weight is lower (closest 'header' that is 'more important')
   // current item will be added at the end of array that's why we need to start from the end
   // (because we are looking for the closest preceding element!)
