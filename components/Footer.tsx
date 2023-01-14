@@ -52,24 +52,22 @@ export function Footer({ socialIconsSizePX = 20 }: FooterProps) {
               <FontAwesomeIcon
                 icon={faLinkedinIn}
                 width={socialIconsSizePX}
-                color='white' // TODO: how to reuse already defined colors from TailwindCSS?
-                className='cursor-pointer'
+                className='cursor-pointer text-white'
               />
               <FontAwesomeIcon
                 icon={faTwitch}
                 width={socialIconsSizePX}
-                color='#FFC700' // TODO: how to reuse already defined colors from TailwindCSS?
-                className='cursor-pointer'
+                className='cursor-pointer text-supernova'
               />
               <FontAwesomeIcon
                 icon={faTwitter}
                 width={socialIconsSizePX}
-                color='white' // TODO: how to reuse already defined colors from TailwindCSS?
-                className='cursor-pointer'
+                className='cursor-pointer text-white'
               />
             </div>
             <p className='text-dusty-gray text-sm text-center sm:text-left'>
-              Copyright ©2022 Nocturne inc. All right reserved.
+              Copyright ©{new Date().getFullYear()} Nocturne inc. All rights
+              reserved.
             </p>
           </div>
           <LinkButton href='/support-us' textPrefix='$'>

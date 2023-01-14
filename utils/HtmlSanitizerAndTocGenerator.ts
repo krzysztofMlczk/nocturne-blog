@@ -12,7 +12,7 @@ export interface TocItem {
 }
 
 type HeaderType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-export const tocHeaderSelector = 'h1, h2, h3, h4, h5';
+export const tocHeaderSelector = 'h1, h2, h3, h4, h5, h6';
 
 function computeIndent(currentItemWeight: number, tocArray: Array<TocItem>) {
   const tocArrayClone: Array<TocItem> = JSON.parse(JSON.stringify(tocArray)); // we want to work on a copy of the array
@@ -96,6 +96,13 @@ export function sanitizeHtmlContentAndGenerateTOC(html: string) {
           tocArray.push(tocItem); // save TOC item
           // set id of the header (so that we can scroll to it via TOC item that points to it)
           node.properties.id = tocItem.id;
+          // inject '#' for anchoring mechanism
+          node.children.push({
+            type: 'element',
+            tagName: 'a',
+            properties: { href: `#${tocItem.id}`, class: 'header-anchor' },
+            children: [{ type: 'text', value: '#' }],
+          });
         }
       },
     })

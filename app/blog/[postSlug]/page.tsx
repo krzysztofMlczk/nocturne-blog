@@ -1,6 +1,8 @@
-import parse from 'html-react-parser';
+import { notFound } from 'next/navigation';
 
+import { ArticlePage } from '#/components/blog/ArticlePage';
 import { GetPostBySlug, gqlClient } from '#/gql';
+import { sanitizeHtmlContentAndGenerateTOC } from '#/utils/HtmlSanitizerAndTocGenerator';
 
 interface PageProps {
   params: {
@@ -14,12 +16,17 @@ export default async function Page({ params }: PageProps) {
   });
 
   if (!post) {
-    return <div>Oops something went wrong...</div>; // TODO: handle this more nicely :D
+    notFound();
   }
 
+  const { sanitizedHtmlContent, tocArray } = sanitizeHtmlContentAndGenerateTOC(
+    post.content.html
+  );
+
   return (
-    <article className='prose md:prose-lg lg:prose-xl prose-nocturne mx-auto'>
-      {parse(post.content.html)}
-    </article>
+    <ArticlePage
+      sanitizedHtmlContent={sanitizedHtmlContent}
+      tocArray={tocArray}
+    />
   );
 }

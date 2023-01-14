@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { formatStringDate } from '#/utils/string-date-formatter';
+import { formatStringDate } from '#/utils/stringDateFormatter';
 
 interface PostCardProps {
   slug: string;

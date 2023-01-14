@@ -2,7 +2,7 @@ import clsx from 'clsx';
 
 import { PT_Sans, PT_Sans_Caption } from '@next/font/google';
 
-import { Footer } from '#/components/footer';
+import { Footer } from '#/components/Footer';
 import { Navbar } from '#/components/Navbar';
 import '#/styles/globals.css';
 

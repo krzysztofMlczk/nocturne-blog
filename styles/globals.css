@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.header-anchor {
+  text-decoration: none;
+  display: none;
+  font-weight: normal;
+  padding-inline: 7px;
+  color: theme('colors.chaos-black.200');
+}
+
+.header-anchor:hover {
+  color: theme('colors.supernova.DEFAULT')
+}
+
+:is(h1, h2, h3, h4, h5, h6):hover .header-anchor {
+  display: inline-block;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 100vh;
+  background: theme('colors.cod-gray.300');
+}

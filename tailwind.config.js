@@ -98,23 +98,43 @@ module.exports = {
             '--tw-prose-invert-pre-bg': 'rgb(0 0 0 / 50%)', // COLOR?
             '--tw-prose-invert-th-borders': theme('colors.pink[600]'), // COLOR?
             '--tw-prose-invert-td-borders': theme('colors.pink[700]'), // COLOR?
-          },
-        },
-        // raw CSS customisations [we only use lg and xl modifiers and they both should have same overrides]
-        // for exact modifier see reference here: https://github.com/tailwindlabs/tailwindcss-typography/blob/master/src/styles.js
-        lg: {
-          css: {
+
+            // raw CSS customisations
+            // for exact modifier see reference here: https://github.com/tailwindlabs/tailwindcss-typography/blob/master/src/styles.js
+            // Overrides for prose-base
             blockquote: {
-              fontStyle: 'normal',
+              padding: theme('spacing.4'),
               backgroundColor: theme('colors.chaos-black.DEFAULT'),
+            },
+            'h5, h6': {
+              color: theme('colors.white'),
+              fontWeight: theme('fontWeight.bold'),
             },
           },
         },
+        // Overrides for prose-lg
+        lg: {
+          css: {
+            blockquote: {
+              padding: theme('spacing.4'),
+              backgroundColor: theme('colors.chaos-black.DEFAULT'),
+            },
+            'h5, h6': {
+              color: theme('colors.white'),
+              fontWeight: theme('fontWeight.bold'),
+            },
+          },
+        },
+        // Overrides for prose-xl
         xl: {
           css: {
             blockquote: {
-              fontStyle: 'normal',
+              padding: theme('spacing.4'),
               backgroundColor: theme('colors.chaos-black.DEFAULT'),
+            },
+            'h5, h6': {
+              color: theme('colors.white'),
+              fontWeight: theme('fontWeight.bold'),
             },
           },
         },
