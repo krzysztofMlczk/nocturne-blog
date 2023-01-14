@@ -1,6 +1,5 @@
 import { rehype } from 'rehype';
 import rehypeRewrite from 'rehype-rewrite';
-import rehypeSanitize from 'rehype-sanitize';
 import rehypeStringify from 'rehype-stringify';
 import slugify from 'slugify';
 
@@ -15,7 +14,7 @@ type HeaderType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 export const tocHeaderSelector = 'h1, h2, h3, h4, h5, h6';
 
 function computeIndent(currentItemWeight: number, tocArray: Array<TocItem>) {
-  const tocArrayClone: Array<TocItem> = JSON.parse(JSON.stringify(tocArray)); // we want to work on a copy of the array
+  const tocArrayClone: Array<TocItem> = structuredClone(tocArray); // we want to work on a copy of the array
   // try to find the closest preceding TOC item which weight is lower (closest 'header' that is 'more important')
   // current item will be added at the end of array that's why we need to start from the end
   // (because we are looking for the closest preceding element!)
@@ -74,7 +73,7 @@ export function sanitizeHtmlContentAndGenerateTOC(html: string) {
   const tocArray: Array<TocItem> = [];
   const sanitizedHtmlContent = rehype() // parses through html
     .data('settings', { fragment: true }) // html parsing options
-    .use(rehypeSanitize) // sanitize parsed html
+    // .use(rehypeSanitize) // sanitize parsed html TODO: figure out a way to enable sanitization and iframes at the same time
     // generate and inject text header id's for TOC sake
     // e.g. <h2>This? IS @ header!</h2> -> <h2 id='this-is-header'>This? IS @ header!</h2>
     .use(rehypeRewrite, {
