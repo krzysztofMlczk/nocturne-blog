@@ -19,12 +19,27 @@ export default async function Page({ params }: PageProps) {
     notFound();
   }
 
+  const { title, author, createdAt, tags, featuredImage, content } = post;
+
   const { sanitizedHtmlContent, tocArray } = sanitizeHtmlContentAndGenerateTOC(
-    post.content.html
+    content.html
   );
 
   return (
     <ArticlePage
+      title={title}
+      author={
+        author
+          ? {
+              name: author.name,
+              photo: author.photo.url,
+              socialMediaLinks: author.socialMediaLinks,
+            }
+          : null
+      }
+      createdAt={createdAt}
+      tags={tags.map(({ name, slug }) => ({ name, slug }))}
+      featuredImage={featuredImage.url}
       sanitizedHtmlContent={sanitizedHtmlContent}
       tocArray={tocArray}
     />
