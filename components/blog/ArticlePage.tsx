@@ -1,8 +1,12 @@
 'use client';
 
+import { useRef } from 'react';
+
 import { ArticleHero } from '#/components/blog/ArticleHero';
+import { ScrollProgressBar } from '#/components/blog/ScrollProgressBar';
 import { TableOfContents } from '#/components/blog/TableOfContents';
 import { useHeadersObserver } from '#/utils/hooks/useHeadersObserver';
+import { useScrollProgress } from '#/utils/hooks/useScrollProgress';
 import { TocItem } from '#/utils/HtmlSanitizerAndTocGenerator';
 
 interface ArticlePageProps {
@@ -28,11 +32,15 @@ export function ArticlePage({
   sanitizedHtmlContent,
   tocArray,
 }: ArticlePageProps) {
+  const contentRef = useRef<HTMLElement | null>(null);
+  const { scrollProgress } = useScrollProgress(contentRef);
   const htmlContentContainerId = 'article-container';
   const { activeHeaderId } = useHeadersObserver(htmlContentContainerId);
+
   return (
-    <div className='block lg:flex justify-end gap-x-16 items-start'>
-      <main>
+    <div className='block relative lg:flex justify-end gap-x-16 items-start'>
+      <ScrollProgressBar progress={scrollProgress} />
+      <main ref={contentRef}>
         <article className='prose md:prose-lg xl:prose-xl prose-nocturne mx-auto lg:mr-0'>
           <section className='not-prose'>
             <ArticleHero

@@ -136,6 +136,14 @@ module.exports = {
               color: theme('colors.white'),
               fontWeight: theme('fontWeight.bold'),
             },
+            code: {
+              borderRadius: '4px',
+              fontWeight: 'normal',
+              backgroundColor: theme('colors.chaos-black.300')
+            },
+            'pre code': {
+              backgroundColor: 'transparent'
+            }
           },
         },
       }),
