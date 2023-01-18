@@ -10,26 +10,13 @@ export function useScrollProgress(
 
   useEffect(() => {
     if (contentRef) {
-
       const handleScroll = () => {
-        // how far the user has scrolled down
-        const scrollTop = document.documentElement.scrollTop;
-
         if (contentRef.current) {
-          // the distance from the content section to the top of the page
-          const contentOffsetTop = contentRef.current.offsetTop;
-
-          // the height of the content section
-          const contentHeight = contentRef.current.clientHeight;
-
-          if (scrollTop - contentOffsetTop <= 0) {
-            return setScrollProgress(0);
-          } else if (scrollTop - contentHeight > contentHeight) {
-            return setScrollProgress(100);
+          const currentProgress = window.scrollY; // TODO: improve this so content's offset caused by navbar is taken into account
+          const scrollHeight = document.body.scrollHeight - window.innerHeight;
+          if (scrollHeight) {
+            setScrollProgress((currentProgress / scrollHeight) * 100);
           }
-          setScrollProgress(
-              ((scrollTop - contentOffsetTop) / contentHeight) * 100
-          );
         }
       };
 
