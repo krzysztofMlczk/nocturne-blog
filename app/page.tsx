@@ -9,15 +9,15 @@ export default async function HomePage() {
     <>
       <section id='hero' className='bg-chaos-black'>
         <div className='mx-auto max-w-7xl px-6 lg:px-8 py-5 md:py-20 flex flex-col-reverse md:flex-row gap-10 lg:gap-20 items-center justify-center'>
-          <div>
+          <div className='text-center md:text-left'>
             <div className='mb-3'>
-              <SocialMediaIcons />
+              <SocialMediaIcons className='justify-center md:justify-start'/>
             </div>
-            <h1 className='text-supernova font-bold text-7xl tracking-wide'>
+            <h1 className='text-supernova font-bold text-7xl tracking-wide mb-3'>
               Nocturne
             </h1>
-            <h2 className='text-white font-bold text-5xl'>The Game Engine</h2>
-            <p className='text-dusty-gray mt-2 mb-9'>
+            <h2 className='text-white font-bold text-5xl mb-2'>The Game Engine</h2>
+            <p className='text-dusty-gray mb-14'>
               that will finally meet your game development needs
             </p>
             {/*TODO: replace a tag with Link + smooth scroll*/}
@@ -34,7 +34,15 @@ export default async function HomePage() {
             width={465}
             height={407}
             priority
-            className='hidden md:block'
+            className='hidden lg:block'
+          />
+          <Image
+            src={logo3d}
+            alt='3D logo'
+            width={310}
+            height={271.33}
+            priority
+            className='hidden md:block lg:hidden'
           />
           <Image
             src={logo3d}
@@ -48,8 +56,13 @@ export default async function HomePage() {
       </section>
       <section
         id='about'
-        className='min-h-[700px] bg-gradient-to-b from-chaos-black to-cod-gray bg-triangle-pattern'
+        className='min-h-[700px] bg-gradient-to-b from-chaos-black to-cod-gray'
       >
+        <div className='mx-auto max-w-7xl px-6 lg:px-8 py-5 md:py-20'>
+          <h4 className='text-dusty-gray font-bold'>- About</h4>
+        </div>
+      </section>
+      <section id='featured-posts' className='min-h-[700px] bg-cod-gray'>
         <div className='mx-auto max-w-7xl px-6 lg:px-8 py-5 md:py-20'>
           <h4 className='text-dusty-gray font-bold'>- About</h4>
         </div>
@@ -59,9 +72,15 @@ export default async function HomePage() {
         className='bg-gradient-to-b to-chaos-black from-cod-gray'
       >
         <div className='mx-auto max-w-7xl px-6 lg:px-8 py-5 md:py-32 text-center'>
-          <h1 className='text-dusty-gray-200 text-4xl mb-4'>Want to help Game Development community?</h1>
-          <h1 className='text-white font-bold text-5xl mb-3'>Become our sponsor!</h1>
-          <p className='text-dusty-gray mb-16'>Allow us to build amazing product by donating</p>
+          <h1 className='text-dusty-gray-200 text-3xl mb-4'>
+            Want to help Game Development community?
+          </h1>
+          <h1 className='text-white font-bold text-5xl mb-3'>
+            Become our sponsor!
+          </h1>
+          <p className='text-dusty-gray mb-16'>
+            Allow us to build amazing product by donating
+          </p>
           <Link
             href='TODO:ourrpatreon'
             className='border border-supernova text-supernova hover:text-chaos-black transition-colors bg-transparent hover:bg-supernova py-2 px-7 rounded-md font-bold'

@@ -10,8 +10,12 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 import { NavItem } from '#/components/NavItem';
 import { RouteNavItemMap } from '#/utils/constants';
+import {useSelectedLayoutSegment} from "next/navigation";
+import clsx from "clsx";
 
 export function Navbar() {
+  const segment = useSelectedLayoutSegment();
+  const onHomePage = segment === null;
   return (
     <Disclosure
       as='nav'
@@ -35,7 +39,7 @@ export function Navbar() {
               <div className='flex flex-1 items-center justify-center sm:items-stretch sm:justify-start'>
                 <div className='flex flex-shrink-0 items-center'>
                   <Image
-                    className='block h-8 w-auto lg:hidden'
+                    className={clsx('h-8 w-auto', onHomePage ? 'hidden' : 'block sm:hidden' )}
                     src='/logo.svg'
                     width={20}
                     height={20}
@@ -43,7 +47,7 @@ export function Navbar() {
                   />
                   <Link href={`${RouteNavItemMap.home.slug}`}>
                     <Image
-                      className='hidden h-8 w-auto lg:block'
+                      className='hidden h-8 w-auto sm:block'
                       src='/logo.svg'
                       width={20}
                       height={20}

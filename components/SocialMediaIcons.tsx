@@ -1,3 +1,5 @@
+import clsx from 'clsx';
+
 import {
   faLinkedinIn,
   faTwitch,
@@ -6,14 +8,18 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface SocialMediaIconsProps {
+  className?: string;
   socialIconsSizePX?: number;
 }
 
 export function SocialMediaIcons({
+  className,
   socialIconsSizePX = 20,
 }: SocialMediaIconsProps) {
   return (
-    <div className='flex gap-4'>
+    <div
+      className={clsx('flex gap-4', className)}
+    >
       <FontAwesomeIcon
         icon={faLinkedinIn}
         width={socialIconsSizePX}
