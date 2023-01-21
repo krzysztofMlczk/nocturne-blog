@@ -10,8 +10,7 @@ export function Footer() {
   return (
     <footer className='bg-chaos-black py-8 px-6 lg:px-8'>
       <div className='mx-auto max-w-7xl flex flex-col gap-8'>
-        <hr className='bg-dusty-gray' />
-        <div className='grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-20 md:gap-40 lg:gap-60'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-20 md:gap-40 lg:gap-60 pt-10 border-t border-dusty-gray-900'>
           <div className='flex flex-col gap-5'>
             <h3 className='text-white text-2xl font-bold'>About</h3>
             <p className='text-dusty-gray text-sm'>
