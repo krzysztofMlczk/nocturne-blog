@@ -14,10 +14,12 @@ export function Footer() {
           <div className='flex flex-col gap-5'>
             <h3 className='text-white text-2xl font-bold'>About</h3>
             <p className='text-dusty-gray text-sm'>
-              We create modern solutions for game-dev community. We give
-              satisfaction to our recipients. We help developers ship on time.
-              Our products allow development teams to build breathtaking
-              products. We are Nocturne.
+              Nocturne is a project of a 3D game engine implemented in C++
+              language. As an ongoing project developed by a small group of
+              passionate volunteers, it requires a lot of love. If you care
+              about technological progress in Game Development as much as we do
+              consider helping out either by contributing or donating. Best
+              wishes from the Nocturne Team xoxo.
             </p>
           </div>
           <div className='flex flex-col gap-5'>
