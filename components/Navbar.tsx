@@ -1,8 +1,10 @@
 'use client';
 
 import { LinkButton } from './buttons/LinkButton';
+import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useSelectedLayoutSegment } from 'next/navigation';
 import { Fragment } from 'react';
 
 import { Disclosure, Transition } from '@headlessui/react';
@@ -12,6 +14,8 @@ import { NavItem } from '#/components/NavItem';
 import { RouteNavItemMap } from '#/utils/constants';
 
 export function Navbar() {
+  const segment = useSelectedLayoutSegment();
+  const onHomePage = segment === null;
   return (
     <Disclosure
       as='nav'
@@ -34,16 +38,21 @@ export function Navbar() {
               </div>
               <div className='flex flex-1 items-center justify-center sm:items-stretch sm:justify-start'>
                 <div className='flex flex-shrink-0 items-center'>
-                  <Image
-                    className='block h-8 w-auto lg:hidden'
-                    src='/logo.svg'
-                    width={20}
-                    height={20}
-                    alt='Company Logo'
-                  />
                   <Link href={`${RouteNavItemMap.home.slug}`}>
                     <Image
-                      className='hidden h-8 w-auto lg:block'
+                      className={clsx(
+                        'h-8 w-auto',
+                        onHomePage ? 'hidden' : 'block sm:hidden'
+                      )}
+                      src='/logo.svg'
+                      width={20}
+                      height={20}
+                      alt='Company Logo'
+                    />
+                  </Link>
+                  <Link href={`${RouteNavItemMap.home.slug}`}>
+                    <Image
+                      className='hidden h-8 w-auto sm:block'
                       src='/logo.svg'
                       width={20}
                       height={20}
@@ -54,7 +63,6 @@ export function Navbar() {
                 <div className='hidden sm:ml-6 sm:block'>
                   <div className='flex space-x-4'>
                     {Object.values(RouteNavItemMap)
-                      .filter((item) => item.slug !== RouteNavItemMap.home.slug)
                       .map((item) => (
                         <NavItem
                           key={item.slug}
@@ -66,7 +74,7 @@ export function Navbar() {
                 </div>
               </div>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0'>
-                <LinkButton href='/support-us' textPrefix='$'>
+                <LinkButton href='../#donations' textPrefix='$'>
                   <span className='hidden md:inline'>Support us</span>
                 </LinkButton>
               </div>

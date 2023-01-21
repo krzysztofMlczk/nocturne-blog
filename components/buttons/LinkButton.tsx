@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 import { faCircleArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -11,9 +9,10 @@ interface LinkButtonProps {
 
 export const LinkButton = ({ textPrefix, href, children }: LinkButtonProps) => {
   return (
-    <Link
+    // TODO: replace with nextjs Link when they fix it...
+    <a
       href={href}
-      className='flex gap-3 items-center justify-center text-supernova font-bold text-base p-4 cursor-pointer group'
+      className='inline-flex gap-3 w-auto items-center justify-center text-supernova font-bold text-base p-4 cursor-pointer group'
     >
       <span className='group-hover:underline group-hover:underline-offset-8 decoration-2'>
         {textPrefix && `${textPrefix} `}
@@ -24,6 +23,6 @@ export const LinkButton = ({ textPrefix, href, children }: LinkButtonProps) => {
         width={20}
         className='text-supernova'
       />
-    </Link>
+    </a>
   );
 };

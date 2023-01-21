@@ -18,6 +18,11 @@
   display: inline-block;
 }
 
+.text-stroke-supernova {
+  -webkit-text-stroke-color: theme('colors.supernova.DEFAULT');
+  -webkit-text-stroke-width: 1px;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;

@@ -26,7 +26,7 @@ export default async function RootLayout({
   return (
     <html
       lang='en'
-      className={clsx('bg-cod-gray', ptSans.variable, ptSansCaption.variable)} // add fonts' CSS variables to HTML document
+      className={clsx('bg-cod-gray scroll-smooth', ptSans.variable, ptSansCaption.variable)} // add fonts' CSS variables to HTML document
     >
       <head />
       <body className='flex flex-col min-h-screen'>

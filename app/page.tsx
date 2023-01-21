@@ -1,7 +1,24 @@
+import { AboutSection } from '#/app/AboutSection';
+import { FeaturedPostsSection } from '#/app/FeaturedPostsSection';
+import { HeroSection } from '#/app/HeroSection';
+import { SponsorSection } from '#/app/SponsorSection';
+import { GetFeaturedPostsForLanding, gqlClient } from '#/gql';
+
 export default async function HomePage() {
+  const { posts } = await gqlClient.request(GetFeaturedPostsForLanding);
   return (
-    <div className='mx-auto max-w-7xl px-6'>
-        <h1 className='text-white font-semibold text-2xl'>Home Page</h1>
-    </div>
+    <>
+      <HeroSection />
+      <AboutSection />
+      <FeaturedPostsSection
+        featuredPosts={posts.map(({ tags, excerpt, slug, title }) => ({
+          primaryTag: tags[0].name,
+          title,
+          excerpt,
+          slug,
+        }))}
+      />
+      <SponsorSection />
+    </>
   );
 }

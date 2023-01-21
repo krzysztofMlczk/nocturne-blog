@@ -2,26 +2,15 @@
 
 import { LinkButton } from './buttons/LinkButton';
 
-import {
-  faLinkedinIn,
-  faTwitch,
-  faTwitter,
-} from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import { NavItem } from '#/components/NavItem';
+import { SocialMediaIcons } from '#/components/SocialMediaIcons';
 import { RouteNavItemMap } from '#/utils/constants';
 
-interface FooterProps {
-  socialIconsSizePX?: number;
-}
-
-export function Footer({ socialIconsSizePX = 20 }: FooterProps) {
+export function Footer() {
   return (
     <footer className='bg-chaos-black py-8 px-6 lg:px-8'>
       <div className='mx-auto max-w-7xl flex flex-col gap-8'>
-        <hr className='bg-dusty-gray' />
-        <div className='grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-20 md:gap-40 lg:gap-60'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-20 md:gap-40 lg:gap-60 pt-10 border-t border-dusty-gray-900'>
           <div className='flex flex-col gap-5'>
             <h3 className='text-white text-2xl font-bold'>About</h3>
             <p className='text-dusty-gray text-sm'>
@@ -48,23 +37,7 @@ export function Footer({ socialIconsSizePX = 20 }: FooterProps) {
         </div>
         <div className='flex flex-col-reverse sm:flex-row gap-3 justify-between'>
           <div className='flex flex-col md:flex-row gap-6 items-center sm:items-start md:items-center'>
-            <div className='flex gap-4'>
-              <FontAwesomeIcon
-                icon={faLinkedinIn}
-                width={socialIconsSizePX}
-                className='cursor-pointer text-white'
-              />
-              <FontAwesomeIcon
-                icon={faTwitch}
-                width={socialIconsSizePX}
-                className='cursor-pointer text-supernova'
-              />
-              <FontAwesomeIcon
-                icon={faTwitter}
-                width={socialIconsSizePX}
-                className='cursor-pointer text-white'
-              />
-            </div>
+            <SocialMediaIcons />
             <p className='text-dusty-gray text-sm text-center sm:text-left'>
               Copyright ©{new Date().getFullYear()} Nocturne inc. All rights
               reserved.
