@@ -1,12 +1,20 @@
 import Image from 'next/image';
 
 import { LinkButton } from '#/components/buttons/LinkButton';
-import { GetFeaturedPostsForLanding, gqlClient } from '#/gql';
 import { RouteNavItemMap } from '#/utils/constants';
 
-export default async function functionFeaturedPostsSection() {
-  const { posts } = await gqlClient.request(GetFeaturedPostsForLanding);
+interface FeaturedPostsSectionProps {
+  featuredPosts: Array<{
+    primaryTag: string;
+    title: string;
+    excerpt: string;
+    slug: string;
+  }>;
+}
 
+export function FeaturedPostsSection({
+  featuredPosts,
+}: FeaturedPostsSectionProps) {
   return (
     <section id='featured-posts' className='bg-cod-gray'>
       <div className='mx-auto max-w-7xl px-6 lg:px-8 py-5 md:py-20'>
@@ -34,10 +42,10 @@ export default async function functionFeaturedPostsSection() {
             </div>
           </div>
           <div className='flex flex-col'>
-            {posts.slice(0, 2).map(({ tags, title, excerpt, slug }) => (
+            {featuredPosts.slice(0, 2).map(({ primaryTag, title, excerpt, slug }) => (
               <div key={slug} className='py-5 border-t border-dusty-gray-900'>
                 <h3 className='text-sm text-dusty-gray capitalize mb-3'>
-                  {tags.length && tags[0].name}
+                  {primaryTag}
                 </h3>
                 <h2 className='text-white text-3xl mb-6'>{title}</h2>
                 <p
