@@ -8,7 +8,7 @@ export function AboutSection() {
         <h1 className='text-dusty-gray text-base mb-5 md:mb-2'>About</h1>
         <div className='flex flex-col-reverse gap-10 md:gap-20 justify-between md:flex-row mb-7 md:mb-16'>
           <div className='flex items-end'>
-            <h2 className='text-white text-3xl'>Project Objectives</h2>
+            <h2 className='text-white text-4xl'>Project Objectives</h2>
           </div>
           <div>
             <h3 className='text-white font-bold text-lg mb-3'>

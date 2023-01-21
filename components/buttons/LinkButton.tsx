@@ -13,7 +13,7 @@ export const LinkButton = ({ textPrefix, href, children }: LinkButtonProps) => {
   return (
     <Link
       href={href}
-      className='flex gap-3 items-center justify-center text-supernova font-bold text-base p-4 cursor-pointer group'
+      className='inline-flex gap-3 w-auto items-center justify-center text-supernova font-bold text-base p-4 cursor-pointer group'
     >
       <span className='group-hover:underline group-hover:underline-offset-8 decoration-2'>
         {textPrefix && `${textPrefix} `}

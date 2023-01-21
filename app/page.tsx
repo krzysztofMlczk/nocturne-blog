@@ -1,5 +1,5 @@
-import { FeaturedPostsSection } from '#/app/FeaturedPostsSection';
 import { AboutSection } from '#/app/AboutSection';
+import FeaturedPostsSection from '#/app/FeaturedPostsSection';
 import { HeroSection } from '#/app/HeroSection';
 import { SponsorSection } from '#/app/SponsorSection';
 

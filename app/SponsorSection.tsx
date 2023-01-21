@@ -6,7 +6,7 @@ export function SponsorSection() {
       id='donations'
       className='bg-gradient-to-b to-chaos-black from-cod-gray'
     >
-      <div className='mx-auto max-w-7xl px-6 lg:px-8 py-5 md:py-32 text-center'>
+      <div className='mx-auto max-w-7xl px-6 lg:px-8 py-5 md:py-20 text-center'>
         <h1 className='text-dusty-gray-200 text-3xl mb-4'>
           Want to help Game Development community?
         </h1>
