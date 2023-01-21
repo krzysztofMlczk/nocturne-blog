@@ -16,7 +16,7 @@ export default async function functionFeaturedPostsSection() {
               {"Take a peek on how it's goin'!"}
             </h1>
             <p className='text-base text-dusty-gray mb-5'>
-              In our blog we periodically post our progress and how we managed
+              On our blog we periodically post our progress and how we managed
               to achieve some of our milestones. The Nocturne Blog is also a
               place where we share knowledge not only about Game Engines but
               from any Development-related area. Take a look for yourself!
